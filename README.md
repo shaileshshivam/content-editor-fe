@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# Content Editor Setup Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+The project consists of two separate repositories:
+- `content-editor-fe` (Frontend)
+- `content-editor-be` (Backend)
 
-Currently, two official plugins are available:
+## Option 1: Using Deployed Version
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- Access the client application at: [https://content-editor-fe.vercel.app/](https://content-editor-fe.vercel.app/)
 
-## Expanding the ESLint configuration
+### Backend
+- Server is hosted at: [https://content-editor-be.onrender.com](https://content-editor-be.onrender.com)
+- **Note**: The server may be in sleep mode due to hosting restrictions. Initial requests might take longer to wake up the server.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Option 2: Local Development Setup
 
-- Configure the top-level `parserOptions` property like this:
+### Backend Setup
+1. Clone the backend repository:
+   ```bash
+   git clone [content-editor-be-repository-url]
+   cd content-editor-be
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   The server will start on `http://localhost:3001` by default.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Frontend Setup
+1. Clone the frontend repository:
+   ```bash
+   git clone [content-editor-fe-repository-url]
+   cd content-editor-fe
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure API endpoint:
+   - Open `src/constants.ts`
+   - Update the `API_HOST` constant:
+     ```typescript
+     export const API_HOST = "http://localhost:3001";
+     ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Verifying the Setup
+1. Both servers should be running without any errors in the console
+2. Frontend should be able to communicate with the backend
+3. Try performing a basic operation to ensure everything is working correctly
