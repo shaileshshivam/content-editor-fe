@@ -1,5 +1,9 @@
 # Content Editor Setup Guide
 
+<img width="1512" alt="Screenshot 2024-11-02 at 10 38 00 PM" src="https://github.com/user-attachments/assets/ae87d16b-4ea1-43ce-921b-aa1b9d5e50da">
+
+[Demo](https://drive.google.com/file/d/1v1W_Fj2i-Ewdw6RmKA17Zb-ufLZuUz7G/view?usp=sharing)
+
 ## Project Overview
 The project consists of two separate repositories:
 - `content-editor-fe` (Frontend)
